@@ -9,8 +9,8 @@ do
 	[ ! -f "in/in$COUNTER.txt" ] && break
 	echo "Checking in$COUNTER.txt..."
 	OUTPUT=$(java -classpath ./build Main < "in$COUNTER.txt")
-	DIFF=$(diff <(cat "out/out$COUNTER.txt") <(printf "$OUTPUT"))
-    if [[ DIFF != "" ]]; then
+	DIFF=$(diff <(cat "out/out$COUNTER.txt") <(printf "%s" "$OUTPUT"))
+    if [[ $DIFF != "" ]]; then
 		echo "$OUTPUT" > "out-diff/out$COUNTER.txt..."
 		echo "$DIFF"
 	fi

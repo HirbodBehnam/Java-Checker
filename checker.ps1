@@ -1,5 +1,5 @@
 # Compile
-mkdir ./build
+mkdir ./build > $null
 javac -d ./build -sourcepath ./src ./src/*.java
 # Now run each test
 $FileCounter = 1
@@ -12,8 +12,8 @@ while ($true) {
     # Run the code and get the result
     $OutputPath = -join("./out/out", $FileCounter, ".txt")
     $OutputData = Get-Content $InputPath | java -classpath ./build Main
-    $DiffData = Compare-Object ($OutputData) (Get-Content $OutputPath)
-    if (!$DiffData) {
+    $DiffData = Compare-Object ($OutputData) (Get-Content $OutputPath) | Out-String
+    if (!([String]::IsNullOrWhiteSpace($DiffData))) {
         $OutputDiffPath = -join("./out-diff/out", $FileCounter, ".txt")
         $OutputData | Out-File $OutputDiffPath
         Write-Host $DiffData

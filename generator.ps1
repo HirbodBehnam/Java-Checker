@@ -1,5 +1,5 @@
 # Compile
-mkdir ./build
+mkdir ./build > $null
 javac -d ./build -sourcepath ./src ./src/*.java
 # Now run each test
 $FileCounter = 1
