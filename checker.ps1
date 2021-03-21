@@ -13,9 +13,10 @@ while ($true) {
     $OutputPath = -join("./out/out", $FileCounter, ".txt")
     $OutputData = Get-Content $InputPath | java -classpath ./build Main
     $DiffData = Compare-Object ($OutputData) (Get-Content $OutputPath)
-    if ($DiffData) {
+    if (!$DiffData) {
         $OutputDiffPath = -join("./out-diff/out", $FileCounter, ".txt")
         $OutputData | Out-File $OutputDiffPath
+        Write-Host $DiffData
     }
     $FileCounter++
 }
