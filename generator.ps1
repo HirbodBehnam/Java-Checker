@@ -1,6 +1,6 @@
 # Compile
 mkdir ./build
-javac -d ./build ./src/*.java
+javac -d ./build -sourcepath ./src ./src/*.java
 # Now run each test
 $FileCounter = 1
 while ($true) {

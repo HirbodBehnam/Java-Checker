@@ -1,0 +1,5 @@
+in/*.txt
+out/*.txt
+out-diff/*.txt
+src/*
+!src/README.MD

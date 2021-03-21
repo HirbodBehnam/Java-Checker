@@ -1,7 +1,7 @@
 #!/bin/bash
 # Compile
 mkdir build
-javac -d build src/*.java
+javac -d build -sourcepath ./src src/*.java
 # Loop tests
 COUNTER=1
 while :
