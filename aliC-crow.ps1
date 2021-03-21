@@ -8,7 +8,7 @@ $TempDir = New-TemporaryDirectory
 $FileCounter = 1
 while ($true) {
     $InputPath = -join("./testcase", $FileCounter, ".zip")
-    if (![System.IO.File]::Exists($InputPath)) {
+    if (!(Test-Path $InputPath)) {
         break
     }
     Write-Host "Extracting testcase$FileCounter.zip..."

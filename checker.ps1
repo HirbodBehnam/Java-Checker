@@ -5,7 +5,7 @@ javac -d ./build -sourcepath ./src ./src/*.java
 $FileCounter = 1
 while ($true) {
     $InputPath = -join("./in/in", $FileCounter, ".txt")
-    if (![System.IO.File]::Exists($InputPath)) {
+    if (!(Test-Path $InputPath)) {
         break
     }
     Write-Host "Checking in$FileCounter.txt..."
