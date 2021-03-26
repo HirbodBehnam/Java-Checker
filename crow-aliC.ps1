@@ -11,13 +11,13 @@ while ($true) {
     if (!(Test-Path $InputPath)) {
         break
     }
-    Write-Host "Creating testcase$FileCounter.zip..."
+    Write-Host "Creating testcase_$FileCounter.zip..."
     Copy-Item -Path "./in/in$FileCounter.txt" -Destination (Join-Path $TempDir "input.txt")
     Copy-Item -Path "./out/out$FileCounter.txt" -Destination (Join-Path $TempDir "output.txt")
     $compress = @{
         Path = "$TempDir/*.txt"
         CompressionLevel = "Fastest"
-        DestinationPath = "testcase$FileCounter.Zip"
+        DestinationPath = "testcase_$FileCounter.Zip"
     }
     Compress-Archive @compress
     Remove-Item -Force -Recurse "$TempDir/*" # clear the files in temp dir

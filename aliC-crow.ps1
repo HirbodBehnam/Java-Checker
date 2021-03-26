@@ -7,11 +7,11 @@ $TempDir = New-TemporaryDirectory
 # Get each file
 $FileCounter = 1
 while ($true) {
-    $InputPath = -join("./testcase", $FileCounter, ".zip")
+    $InputPath = -join("./testcase_", $FileCounter, ".zip")
     if (!(Test-Path $InputPath)) {
         break
     }
-    Write-Host "Extracting testcase$FileCounter.zip..."
+    Write-Host "Extracting testcase_$FileCounter.zip..."
     Expand-Archive -LiteralPath $InputPath -DestinationPath $TempDir # extract in temp dir
     Move-Item -Path (Join-Path $TempDir "input.txt") -Destination "./in/in$FileCounter.txt"
     Move-Item -Path (Join-Path $TempDir "output.txt") -Destination "./out/out$FileCounter.txt"
